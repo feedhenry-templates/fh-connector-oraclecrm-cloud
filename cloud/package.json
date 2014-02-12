@@ -1,0 +1,11 @@
+{
+  "name": "fh-app",
+  "version": "0.1.0",
+  "dependencies" : {
+    "fh-webapp" : "*",
+    "fh-api" : "*",
+    "express" : "3.3.4",
+    "backbone": "~1.1.0",
+    "node-soap-backbone": "0.0.2"
+  }
+}
