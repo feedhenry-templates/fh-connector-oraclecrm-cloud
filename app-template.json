@@ -1,4 +1,5 @@
 {
+  "id": "oraclecrm-cloud",
   "name": "Oracle Fusion CRM Connector",
   "type": "cloud_nodejs",
   "repoUrl": "https://github.com/feedhenry/fh-connector-oraclecrm-cloud.git",
