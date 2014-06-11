@@ -51,19 +51,19 @@ Models.SalesAccount = Backbone.Model.extend({
     "UserSalesAccountId": "300000093149676",
     "UpdateRating": "1"
     */
-      //     'Id',
-  //     'AccountNumber',
-  //     'Industry',
-  //     'Name',
-  //     'Rating',
-  //     'Website',
-  //     'Type',
-  //     'BillingStreet',
-  //     'BillingCity',
-  //     'BillingState',
-  //     'BillingPostalCode',
-  //     'BillingCountry',
-  //     'Phone'
+    //     'Id',
+    //     'AccountNumber',
+    //     'Industry',
+    //     'Name',
+    //     'Rating',
+    //     'Website',
+    //     'Type',
+    //     'BillingStreet',
+    //     'BillingCity',
+    //     'BillingState',
+    //     'BillingPostalCode',
+    //     'BillingCountry',
+    //     'Phone'
     var getField = function(obj, name) {
       if (obj == null || obj[name] == null || (typeof obj[name] === 'object')) {
         return null;
@@ -96,13 +96,15 @@ Collections.SalesAccounts = Backbone.Collection.extend({
   model: Models.SalesAccount,
   wsdl: 'https://trialawzr.crm.us2.oraclecloud.com/crmCommonSalesParties/SalesPartyService?WSDL',
   soapOperationForMethod: function(method, collection, options) {
-    switch(method) {
-      case 'read': return 'findSalesAccount';
-      default: throw new Error('unsupported_method');
+    switch (method) {
+      case 'read':
+        return 'findSalesAccount';
+      default:
+        throw new Error('unsupported_method');
     }
   },
   soapBodyForMethod: function(method, collection, options) {
-    switch(method) {
+    switch (method) {
       case 'read':
         return {
           "findCriteria": {
@@ -112,13 +114,14 @@ Collections.SalesAccounts = Backbone.Collection.extend({
                 "ns1::http://xmlns.oracle.com/adf/svc/types/::item": {
                   "ns1::http://xmlns.oracle.com/adf/svc/types/::attribute": "PartyUniqueName1",
                   "ns1::http://xmlns.oracle.com/adf/svc/types/::operator": "=",
-                  "ns1::http://xmlns.oracle.com/adf/svc/types/::value": getUserNameFromUserId(process.env.SOAP_USER)// e.g. 'Lisa Jones'
+                  "ns1::http://xmlns.oracle.com/adf/svc/types/::value": getUserNameFromUserId(process.env.SOAP_USER) // e.g. 'Lisa Jones'
                 }
               }
             }
           }
         };
-      default: throw new Error('unsupported_method');
+      default:
+        throw new Error('unsupported_method');
     }
   },
   soapUser: process.env.SOAP_USER,

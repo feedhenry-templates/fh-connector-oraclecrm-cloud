@@ -15,7 +15,7 @@ exports.listAccounts = function(params, cb) {
     console.log('creating SalesAccounts collection');
     collections.SalesAccounts = new bbmodels.Collections.SalesAccounts();
   }
-  
+
   console.log('fetching SalesAccounts');
   collections.SalesAccounts.fetch({
     success: function(collection, response, options) {
@@ -35,10 +35,10 @@ exports.listAccounts = function(params, cb) {
   // aaaClient.getServiceToken(params, function(err, res) {
   //   if ( err ) return cb(err);
   //   var auth = res.token;
-    
+
   //   var conn = new sf.Connection(auth),
   //   queryFields;
-    
+
   //   queryFields = [
   //     'Id',
   //     'AccountNumber',
@@ -136,7 +136,7 @@ exports.getAccountDetails = function(params, cb) {
 
 exports.getCaseDetails = function(params, cb) {
   aaaClient.getServiceToken(params, function(err, res) {
-    if ( err ) return cb(err);
+    if (err) return cb(err);
     var auth = res.token;
     var conn = new sf.Connection(auth);
 
@@ -155,7 +155,7 @@ exports.getCaseDetails = function(params, cb) {
 
 function injectLatLngAndServe(account, cb) {
   var url,
-  data = '';
+    data = '';
 
   var address = [
     account.BillingStreet,
@@ -166,7 +166,7 @@ function injectLatLngAndServe(account, cb) {
   address = address.replace(/ /g, '+');
 
   url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' +
-  address + '&sensor=false';
+    address + '&sensor=false';
 
   http.get(url, function(res) {
 
@@ -176,7 +176,7 @@ function injectLatLngAndServe(account, cb) {
 
     res.setEncoding('utf8');
 
-    res.on('data', function (chunk) {
+    res.on('data', function(chunk) {
       data += chunk;
     });
 
