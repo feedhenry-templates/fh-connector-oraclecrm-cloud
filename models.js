@@ -6,7 +6,7 @@ var Collections = exports.Collections = {};
 
 var getUserNameFromUserId = function(userId) {
   var username = [];
-  var parts = userId.split('.').forEach(function(part) {
+  userId.split('.').forEach(function(part) {
     username.push(part.charAt(0).toUpperCase() + part.slice(1));
   });
   username = username.join(' ');
@@ -65,7 +65,7 @@ Models.SalesAccount = Backbone.Model.extend({
     //     'BillingCountry',
     //     'Phone'
     var getField = function(obj, name) {
-      if (obj == null || obj[name] == null || (typeof obj[name] === 'object')) {
+      if (obj === null || obj[name] === null || (typeof obj[name] === 'object')) {
         return null;
       }
       return obj[name];
@@ -95,7 +95,7 @@ Models.SalesAccount = Backbone.Model.extend({
 Collections.SalesAccounts = Backbone.Collection.extend({
   model: Models.SalesAccount,
   wsdl: 'https://trialawzr.crm.us2.oraclecloud.com/crmCommonSalesParties/SalesPartyService?WSDL',
-  soapOperationForMethod: function(method, collection, options) {
+  soapOperationForMethod: function(method) {
     switch (method) {
       case 'read':
         return 'findSalesAccount';
@@ -103,7 +103,7 @@ Collections.SalesAccounts = Backbone.Collection.extend({
         throw new Error('unsupported_method');
     }
   },
-  soapBodyForMethod: function(method, collection, options) {
+  soapBodyForMethod: function(method) {
     switch (method) {
       case 'read':
         return {
