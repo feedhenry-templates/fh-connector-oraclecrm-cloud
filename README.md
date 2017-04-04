@@ -1,6 +1,7 @@
 FORMAT: 1A
 
 # Oracle Fusion CRM Connector API
+[![Dependency Status](https://img.shields.io/david/feedhenry-templates/fh-connector-oraclecrm-cloud.svg?style=flat-square)](https://david-dm.org/feedhenry-templates/fh-connector-oraclecrm-cloud)
 
 The Oracle Fusion CRM FeedHenry Connector API. 
 
