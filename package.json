@@ -2,13 +2,14 @@
   "name": "fh-service-oraclecrm-cloud",
   "version": "0.2.0",
   "dependencies": {
-    "express": "4.0.0",
-    "fh-mbaas-api": "6.0.1",
-    "request": "2.34.0",
-    "body-parser": "~1.0.2",
+    "express": "4.16.0",
+    "fh-mbaas-api": "6.1.8",
+    "request": "2.81.0",
+    "body-parser": "~1.17.1",
     "cors": "~2.2.0",
     "backbone": "~1.1.0",
-    "node-soap-backbone": "0.0.2"
+    "node-soap-backbone": "0.0.2",
+    "snyk": "^1.42.6"
   },
   "devDependencies": {
     "grunt-concurrent": "latest",
@@ -33,6 +34,9 @@
   "main": "application.js",
   "scripts": {
     "start": "node application.js",
-    "test": "grunt unit"
-  }
+    "test": "grunt unit",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
